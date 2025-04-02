@@ -1,0 +1,26 @@
+{{>layouts/header}}
+<!-- layouts/header.mustache 파일을 포함 (공통된 헤더 템플릿) -->
+<!-- Bootstrap의 container 클래스를 사용하여 양식을 중앙 정렬 -->
+<!-- post방식으로 데이터 전송, action으로 주소에 "/articles/create" 덧붙여서 그 주소로 폼 데이터 보냄 -->
+<form class="container" action="/articles/create" method="post">
+
+    <div class="mb-3"> <!-- 입력 필드 그룹 (Bootstrap의 여백 클래스 사용) -->
+        <label class="form-label">제목</label> <!-- 제목 입력 필드의 라벨 -->
+        <input type="text" class="form-control"> <!-- 제목을 입력하는 텍스트 필드 -->
+        <!-- form-control 클래스를 사용하여 Bootstrap 스타일 적용 -->
+    </div>
+
+    <div class="mb-3"> <!-- 입력 필드 그룹 -->
+        <label class="form-label">내용</label> <!-- 내용 입력 필드의 라벨 -->
+        <textarea class="form-control" rows="3"></textarea>
+        <!-- 여러 줄을 입력할 수 있는 textarea (3줄 크기) -->
+        <!-- Bootstrap의 form-control 클래스 적용 -->
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <!-- 제출 버튼 (Bootstrap의 파란색 버튼 스타일 적용) -->
+
+</form>
+
+{{>layouts/footer}}
+<!-- layouts/footer.mustache 파일을 포함 (공통된 푸터 템플릿) -->
