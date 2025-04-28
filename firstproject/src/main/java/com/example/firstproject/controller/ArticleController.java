@@ -6,7 +6,9 @@ import com.example.firstproject.repository.ArticleRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Slf4j  // 로깅 기능
@@ -35,5 +37,17 @@ public class ArticleController {
 //        System.out.println(saved.toString());  // article이 DB에 잘 저장되는지 확인 출력 -> @Slf4j로 대체
         return "";
     }
-    
+
+    @GetMapping("/articles/{id}")  // id마다 /articles/1,2,3,... 불러오려고 함
+    public String show(@PathVariable Long id, Model model) {
+//        log.info("id = "+ id);  // 로그 확인(id 잘 받는지)
+        // 1. id 조회 -> 데이터 가져오기
+        Article articleEntity = articleRepository.findById(id).orElse(null);  // id값이 없으면 null 반환
+        // 2. 모델에 데이터 등록하기
+        model.addAttribute("article",articleEntity);
+        // 3. view 페이지 반환
+        return "articles/show";
+    }
+
+
 }
